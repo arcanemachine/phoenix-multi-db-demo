@@ -25,6 +25,12 @@ defmodule MultiDbDemoWeb.Router do
   #   pipe_through :api
   # end
 
+  scope "/v1", MultiDbDemoWeb.V1, as: :v1 do
+    pipe_through :api
+
+    resources "/persons", PersonController
+  end
+
   # Enables LiveDashboard only for development
   #
   # If you want to use the LiveDashboard in production, you should put
