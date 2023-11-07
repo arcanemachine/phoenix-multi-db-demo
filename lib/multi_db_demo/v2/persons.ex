@@ -4,7 +4,7 @@ defmodule MultiDbDemo.V2.Persons do
   """
 
   import Ecto.Query, warn: false
-  alias MultiDbDemo.Repo
+  alias MultiDbDemo.Repo.V2, as: Repo
 
   alias MultiDbDemo.V2.Persons.Person
 
