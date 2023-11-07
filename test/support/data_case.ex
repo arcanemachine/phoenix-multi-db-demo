@@ -18,7 +18,8 @@ defmodule MultiDbDemo.DataCase do
 
   using do
     quote do
-      alias MultiDbDemo.Repo
+      alias MultiDbDemo.Repo.V1, as: RepoV1
+      alias MultiDbDemo.Repo.V2, as: RepoV2
 
       import Ecto
       import Ecto.Changeset
@@ -36,7 +37,12 @@ defmodule MultiDbDemo.DataCase do
   Sets up the sandbox based on the test tags.
   """
   def setup_sandbox(tags) do
-    pid = Ecto.Adapters.SQL.Sandbox.start_owner!(MultiDbDemo.Repo, shared: not tags[:async])
+    # repo v1
+    pid = Ecto.Adapters.SQL.Sandbox.start_owner!(MultiDbDemo.Repo.V1, shared: not tags[:async])
+    on_exit(fn -> Ecto.Adapters.SQL.Sandbox.stop_owner(pid) end)
+
+    # repo v2
+    pid = Ecto.Adapters.SQL.Sandbox.start_owner!(MultiDbDemo.Repo.V2, shared: not tags[:async])
     on_exit(fn -> Ecto.Adapters.SQL.Sandbox.stop_owner(pid) end)
   end
 
