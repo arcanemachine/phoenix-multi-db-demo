@@ -1,0 +1,21 @@
+#!/bin/sh
+
+# start a postgres container listening on port 5432
+docker run \
+  --rm \
+  --detach \
+  --name postgres_v1 \
+  -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres \
+  -p 5432:5432 \
+  -v postgres_v1:/var/lib/postgresql/data \
+  postgres
+
+# start another postgres container listening on port 5433
+docker run \
+  --rm \
+  --detach \
+  --name postgres_v2 \
+  -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres \
+  -p 5433:5432 \
+  -v postgres_v2:/var/lib/postgresql/data \
+  postgres

@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# exit on error
+set -e
+
+# run the demo script
+mix run demo.exs
+
+# show success message
+printf "\033[32mSuccess! The demo completed without an error.\033[39m\n"
