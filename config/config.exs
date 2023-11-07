@@ -8,7 +8,7 @@
 import Config
 
 config :multi_db_demo,
-  ecto_repos: [MultiDbDemo.Repo]
+  ecto_repos: [MultiDbDemo.Repo.V1, MultiDbDemo.Repo.V2]
 
 # Configures the endpoint
 config :multi_db_demo, MultiDbDemoWeb.Endpoint,

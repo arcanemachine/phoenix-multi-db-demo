@@ -8,8 +8,9 @@ defmodule MultiDbDemo.Application do
   @impl true
   def start(_type, _args) do
     children = [
-      # Start the Ecto repository
-      MultiDbDemo.Repo,
+      # Start the Ecto repositories
+      MultiDbDemo.Repo.V1,
+      MultiDbDemo.Repo.V2,
       # Start the Telemetry supervisor
       MultiDbDemoWeb.Telemetry,
       # Start the PubSub system
