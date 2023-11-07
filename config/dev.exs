@@ -1,11 +1,22 @@
 import Config
 
 # Configure your database
-config :multi_db_demo, MultiDbDemo.Repo,
+config :multi_db_demo, MultiDbDemo.Repo.V1,
   username: "postgres",
   password: "postgres",
   hostname: "localhost",
-  database: "multi_db_demo_dev",
+  port: 5432,
+  database: "multi_db_demo_v1_dev",
+  stacktrace: true,
+  show_sensitive_data_on_connection_error: true,
+  pool_size: 10
+
+config :multi_db_demo, MultiDbDemo.Repo.V2,
+  username: "postgres",
+  password: "postgres",
+  hostname: "localhost",
+  port: 5433,
+  database: "multi_db_demo_v2_dev",
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
